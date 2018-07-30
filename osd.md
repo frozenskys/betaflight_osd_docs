@@ -14,8 +14,8 @@
 | ![010.png](osd_images/010.png) | 0x0A | 010 |                                 |       |
 | ![011.png](osd_images/011.png) | 0x0B | 011 |                                 |       |
 | ![012.png](osd_images/012.png) | 0x0C | 012 | SYM_M                           |       |
-| ![013.png](osd_images/013.png) | 0x0D | 013 | SYM_TEMP_F                      | No longer used in OSD.c ? Using F |
-| ![014.png](osd_images/014.png) | 0x0E | 014 | SYM_TEMP_C                      | No longer used in OSD.c ? Using C |
+| ![013.png](osd_images/013.png) | 0x0D | 013 | SYM_TEMP_F                      | No longer used in OSD.c ? Using F instead |
+| ![014.png](osd_images/014.png) | 0x0E | 014 | SYM_TEMP_C                      | No longer used in OSD.c ? Using C instead |
 | ![015.png](osd_images/015.png) | 0x0F | 015 | SYM_FT                          |       |
 | ![016.png](osd_images/016.png) | 0x10 | 016 |                                 |       |
 | ![017.png](osd_images/017.png) | 0x11 | 017 |                                 |       |
@@ -41,26 +41,26 @@
 | ![037.png](osd_images/037.png) | 0x25 | 037 |                                 |       |
 | ![038.png](osd_images/038.png) | 0x26 | 038 | SYM_AH_CENTER_LINE              |       |
 | ![039.png](osd_images/039.png) | 0x27 | 039 | SYM_AH_CENTER_LINE_RIGHT        |       |
-| ![040.png](osd_images/040.png) | 0x28 | 040 | *ASCII starts here*             |       |
+| ![040.png](osd_images/040.png) | 0x28 | 040 |                                 | *ASCII starts here* |
 | ![045.png](osd_images/045.png) | 0x2D | 045 | SYM_COLON                       |       |
 | ![087.png](osd_images/087.png) | 0x57 | 087 | SYM_WATT                        |       |
-| ![095.png](osd_images/095.png) | 0x5F | 095 | *ASCII ends here*               |       |
+| ![095.png](osd_images/095.png) | 0x5F | 095 |                                 | *ASCII ends here* |
 | ![096.png](osd_images/096.png) | 0x60 | 096 | SYM_ARROW_SOUTH                 |       |
-| ![097.png](osd_images/097.png) | 0x61 | 097 | SYM_ARROW_2                     | Calc  |
-| ![098.png](osd_images/098.png) | 0x62 | 098 | SYM_ARROW_3                     | Calc  |
-| ![099.png](osd_images/099.png) | 0x63 | 099 | SYM_ARROW_4                     | Calc  |
-| ![100.png](osd_images/100.png) | 0x64 | 100 | SYM_ARROW_EAST                  | Calc  |
-| ![101.png](osd_images/101.png) | 0x65 | 101 | SYM_ARROW_6                     | Calc  |
-| ![102.png](osd_images/102.png) | 0x66 | 102 | SYM_ARROW_7                     | Calc  |
-| ![103.png](osd_images/103.png) | 0x67 | 103 | SYM_ARROW_8                     | Calc  |
-| ![104.png](osd_images/104.png) | 0x68 | 104 | SYM_ARROW_NORTH                 | Calc  |
-| ![105.png](osd_images/105.png) | 0x69 | 105 | SYM_ARROW_10                    | Calc  |
-| ![106.png](osd_images/106.png) | 0x6A | 106 | SYM_ARROW_11                    | Calc  |
-| ![107.png](osd_images/107.png) | 0x6B | 107 | SYM_ARROW_12                    | Calc  |
-| ![108.png](osd_images/108.png) | 0x6C | 108 | SYM_ARROW_WEST                  | Calc  |
-| ![109.png](osd_images/109.png) | 0x6D | 109 | SYM_ARROW_14                    | Calc  |
-| ![110.png](osd_images/110.png) | 0x6E | 110 | SYM_ARROW_15                    | Calc  |
-| ![111.png](osd_images/111.png) | 0x6F | 111 | SYM_ARROW_16                    | Calc  |
+| ![097.png](osd_images/097.png) | 0x61 | 097 | SYM_ARROW_2                     | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![098.png](osd_images/098.png) | 0x62 | 098 | SYM_ARROW_3                     | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![099.png](osd_images/099.png) | 0x63 | 099 | SYM_ARROW_4                     | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![100.png](osd_images/100.png) | 0x64 | 100 | SYM_ARROW_EAST                  | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![101.png](osd_images/101.png) | 0x65 | 101 | SYM_ARROW_6                     | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![102.png](osd_images/102.png) | 0x66 | 102 | SYM_ARROW_7                     | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![103.png](osd_images/103.png) | 0x67 | 103 | SYM_ARROW_8                     | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![104.png](osd_images/104.png) | 0x68 | 104 | SYM_ARROW_NORTH                 | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![105.png](osd_images/105.png) | 0x69 | 105 | SYM_ARROW_10                    | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![106.png](osd_images/106.png) | 0x6A | 106 | SYM_ARROW_11                    | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![107.png](osd_images/107.png) | 0x6B | 107 | SYM_ARROW_12                    | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![108.png](osd_images/108.png) | 0x6C | 108 | SYM_ARROW_WEST                  | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![109.png](osd_images/109.png) | 0x6D | 109 | SYM_ARROW_14                    | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![110.png](osd_images/110.png) | 0x6E | 110 | SYM_ARROW_15                    | Calculated from SYM_ARROW_SOUTH + heading  |
+| ![111.png](osd_images/111.png) | 0x6F | 111 | SYM_ARROW_16                    | Calculated from SYM_ARROW_SOUTH + heading  |
 | ![112.png](osd_images/112.png) | 0x70 | 112 | SYM_ON_H                        |       |
 | ![113.png](osd_images/113.png) | 0x71 | 113 | SYM_FLY_H                       |       |
 | ![114.png](osd_images/114.png) | 0x72 | 114 | SYM_DIRECTION                   |       |
@@ -78,14 +78,14 @@
 | ![126.png](osd_images/126.png) | 0x7E | 126 | SYM_AH_CENTER                   |       |
 | ![127.png](osd_images/127.png) | 0x7F | 127 | SYM_VARIO                       |       |
 | ![128.png](osd_images/128.png) | 0x80 | 128 | SYM_AH_BAR9_0                   |       |
-| ![129.png](osd_images/129.png) | 0x81 | 129 |                                 | Calc  |
-| ![130.png](osd_images/130.png) | 0x82 | 130 |                                 | Calc  |
-| ![131.png](osd_images/131.png) | 0x83 | 131 |                                 | Calc  |
-| ![132.png](osd_images/132.png) | 0x84 | 132 |                                 | Calc  |
-| ![133.png](osd_images/133.png) | 0x85 | 133 |                                 | Calc  |
-| ![134.png](osd_images/134.png) | 0x86 | 134 |                                 | Calc  |
-| ![135.png](osd_images/135.png) | 0x87 | 135 |                                 | Calc  |
-| ![136.png](osd_images/136.png) | 0x88 | 136 |                                 | Calc  |
+| ![129.png](osd_images/129.png) | 0x81 | 129 |                                 | Calculated in AH using SYM_AH_BAR9_0 as base |
+| ![130.png](osd_images/130.png) | 0x82 | 130 |                                 | Calculated in AH using SYM_AH_BAR9_0 as base |
+| ![131.png](osd_images/131.png) | 0x83 | 131 |                                 | Calculated in AH using SYM_AH_BAR9_0 as base |
+| ![132.png](osd_images/132.png) | 0x84 | 132 |                                 | Calculated in AH using SYM_AH_BAR9_0 as base |
+| ![133.png](osd_images/133.png) | 0x85 | 133 |                                 | Calculated in AH using SYM_AH_BAR9_0 as base |
+| ![134.png](osd_images/134.png) | 0x86 | 134 |                                 | Calculated in AH using SYM_AH_BAR9_0 as base |
+| ![135.png](osd_images/135.png) | 0x87 | 135 |                                 | Calculated in AH using SYM_AH_BAR9_0 as base |
+| ![136.png](osd_images/136.png) | 0x88 | 136 |                                 | Calculated in AH using SYM_AH_BAR9_0 as base |
 | ![137.png](osd_images/137.png) | 0x89 | 137 | SYM_PLUS                        |       |
 | ![138.png](osd_images/138.png) | 0x8A | 138 | SYM_PB_START                    |       |
 | ![139.png](osd_images/139.png) | 0x8B | 139 | SYM_PB_FULL                     |       |
