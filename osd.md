@@ -93,12 +93,12 @@
 | ![141.png](osd_images/141.png) | 0x8D | 141 | SYM_PB_EMPTY                    | Used in OSD.c      |
 | ![142.png](osd_images/142.png) | 0x8E | 142 | SYM_PB_END                      | Used in OSD.c      |
 | ![143.png](osd_images/143.png) | 0x8F | 143 | SYM_PB_CLOSE                    | Used in OSD.c      |
-| ![144.png](osd_images/144.png) | 0x90 | 144 | SYM_BATT_FULL                   | Calculated from SYM_BATT_EMPTY - constrain(symOffset, 0, 6)      |
-| ![145.png](osd_images/145.png) | 0x91 | 145 | SYM_BATT_5                      | Calculated from SYM_BATT_EMPTY - constrain(symOffset, 0, 6)      |
-| ![146.png](osd_images/146.png) | 0x92 | 146 | SYM_BATT_4                      | Calculated from SYM_BATT_EMPTY - constrain(symOffset, 0, 6)      |
-| ![147.png](osd_images/147.png) | 0x93 | 147 | SYM_BATT_3                      | Calculated from SYM_BATT_EMPTY - constrain(symOffset, 0, 6)      |
-| ![148.png](osd_images/148.png) | 0x94 | 148 | SYM_BATT_2                      | Calculated from SYM_BATT_EMPTY - constrain(symOffset, 0, 6)      |
-| ![149.png](osd_images/149.png) | 0x95 | 149 | SYM_BATT_1                      | Calculated from SYM_BATT_EMPTY - constrain(symOffset, 0, 6)      |
+| ![144.png](osd_images/144.png) | 0x90 | 144 | SYM_BATT_FULL                   | Calculated from SYM_BATT_EMPTY      |
+| ![145.png](osd_images/145.png) | 0x91 | 145 | SYM_BATT_5                      | Calculated from SYM_BATT_EMPTY      |
+| ![146.png](osd_images/146.png) | 0x92 | 146 | SYM_BATT_4                      | Calculated from SYM_BATT_EMPTY      |
+| ![147.png](osd_images/147.png) | 0x93 | 147 | SYM_BATT_3                      | Calculated from SYM_BATT_EMPTY      |
+| ![148.png](osd_images/148.png) | 0x94 | 148 | SYM_BATT_2                      | Calculated from SYM_BATT_EMPTY      |
+| ![149.png](osd_images/149.png) | 0x95 | 149 | SYM_BATT_1                      | Calculated from SYM_BATT_EMPTY      |
 | ![150.png](osd_images/150.png) | 0x96 | 150 | SYM_BATT_EMPTY                  | Used in OSD.c      |
 | ![151.png](osd_images/151.png) | 0x97 | 151 | SYM_MAIN_BATT                   | Used in OSD.c      |
 | ![152.png](osd_images/152.png) | 0x98 | 152 | SYM_ACROGY                      |       |
@@ -110,6 +110,6 @@
 | ![158.png](osd_images/158.png) | 0x9E | 158 | SYM_GHOME1                      |       |
 | ![159.png](osd_images/159.png) | 0x9F | 159 | SYM_MS                          |       |
 | ![160.png](osd_images/160.png) | 0xA0 | 160 | LOGO START                      |       |
-| ![201.png](osd_images/201.png) | 0xC9 | 201 | SYM_AH_DECORATION_UP            | This loooks wrong - also not used in OSD.c |
-| ![207.png](osd_images/207.png) | 0xCF | 207 | SYM_AH_DECORATION_DOWN          | This loooks wrong - also not used in OSD.c |
+| ![201.png](osd_images/201.png) | 0xC9 | 201 | SYM_AH_DECORATION_UP            | This looks wrong - also not used in OSD.c |
+| ![207.png](osd_images/207.png) | 0xCF | 207 | SYM_AH_DECORATION_DOWN          | This looks wrong - also not used in OSD.c |
 |                                | 0xFF | 255 | SYM_END_OF_FONT                 |       |
