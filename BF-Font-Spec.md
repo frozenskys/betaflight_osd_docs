@@ -15,7 +15,7 @@ Characters in positions `0x00` and `0xFF` have special uses:
 
 ## Metadata storage
 
-To allow the firmware to determine the "capabilities" of the font installed it is proposed to store metadata in the font. It is proposed to use 0xFF for metadata as excluding this character from use will avoid issues with code using the auto-increment display write mode. Also in the currently used BF fonts this character is completely transparent meaning all bytes are set to `0x55`. The proposed layout of the 64 bytes for this "Info Character" is layed out below - the first four bytes are version information and shouldn't change between font versions, the following bytes are helper information that may vary by font version.
+To allow the firmware to determine the "capabilities" of the font installed it is proposed to store metadata in the font. It is proposed to use `0xFF` for metadata as excluding this character from use will avoid issues with code using the auto-increment display write mode. Also in the currently used BF fonts this character is completely transparent meaning all bytes are set to `0x55`. The proposed layout of the 64 bytes for this "Info Character" is layed out below - the first four bytes are version information and shouldn't change between specification versions, the following bytes are helper information that may vary by specification version.
 
 - Byte 1 - Info Character identifier
 - Byte 2 - Font Block Version
@@ -81,7 +81,7 @@ Another example (taken from the BF layout) could be:
 
 ### Font ID
 
-The ID of the font - This is to allow auto loading etc for system fonts. Custom or user fonts would set this byte to `0x00` to disable this functionality.
+The ID of the font - This is to allow auto loading etc. for system fonts. Custom or user fonts would set this byte to `0x00` to disable this functionality.
 
 - Custom `0x00`
 - Default `0x01`
