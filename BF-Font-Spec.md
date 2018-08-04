@@ -47,6 +47,8 @@ The font block version is used to determine the order and size of the symbol "bl
 |`0xB8 - 0xFE`    | Boot (Splash) Logo (4x24)                                 |
 |`0xFF`           | System Reserved - Info Character                          |
 
+![Example font block layout](images/block.png)
+
 ### Font Symbol Layout ID
 
  This "sub-version" allows different layouts within the OSD symbol space e.g. iNav and Betaflight have different OSD display functions requiring different symbols. A part example would be:
