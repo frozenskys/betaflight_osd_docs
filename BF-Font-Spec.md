@@ -18,8 +18,8 @@ Characters in positions `0x00` and `0xFF` have special uses:
 To allow the firmware to determine the "capabilities" of the font installed it is proposed to store metadata in the font. It is proposed to use 0xFF for metadata as excluding this character from use will avoid issues with code using the auto-increment display write mode. Also in the currently used BF fonts this character is completely transparent meaning all bytes are set to `0x55`. The proposed layout of the 64 bytes for this "Info Character" is layed out below - the first four bytes are version information and shouldn't change between font versions, the following bytes are helper information that may vary by font version.
 
 - Byte 1 - Info Character identifier
-- Byte 2 - Font Block Version
-- Byte 3 - Font Symbol Layout ID
+- Byte 2 - Font Metadata Version
+- Byte 3 - Firmware Type Identifier
 - Byte 4 - Font ID
 
 - Byte 5 - ASCII Space Offset
@@ -34,28 +34,27 @@ To allow the firmware to determine the "capabilities" of the font installed it i
 
 This is to help identify this character as a version character - as the current fonts have this byte as `0x55` it is proposed to set this to `0xFF`
 
-### Font Block Version
+### Fomt Metadata Version
 
-The font block version is used to determine the order and size of the symbol "blocks" within the character memory or font file. For example:
+Specifies the layout of the rest of the metadata within the "Info Character" i.e bytes 3-64. For Version 1 this will be as specified above:
 
-| Memory Location | Symbol Block |
-| --------------- | --------------------------------------------------------- |
-|`0x00`           | System Reserved - Blank Character                         |
-|`0x01 - 0x3F`    | ASCII Standard (0-9, A-Z, + some characters such as ?#%)  |
-|`0x40 - 0xB4`    | OSD Symbol Space                                          |
-|`0xB4 - 0xB7`    | Pilot Logo (2x2)                                          |
-|`0xB8 - 0xFE`    | Boot (Splash) Logo (4x24)                                 |
-|`0xFF`           | System Reserved - Info Character                          |
+- Byte 3 - Firmware Type Identifier
+- Byte 4 - Font ID
 
-Example font block layout:
+- Byte 5 - ASCII Space Offset
+- Byte 6 - Symbol Space Offset
+- Byte 7 - Pilot Logo Space Offset
+- Byte 8 - Boot Logo Space Offset
 
-![Example font block layout](images/block.png)
+- Bytes 9 - 63 Reserved for future use - set to `0x00`
+- Byte 64 - CRC or Checksum byte
 
-### Font Symbol Layout ID
+### Firmware Type Identifier
 
- This "sub-version" allows different layouts within the OSD symbol space e.g. iNav and Betaflight have different OSD display functions requiring different symbols. A part example would be:
+Determines the class of firmware that this font will work with as iNav and Betaflight have different OSD display functions requiring different symbols. A part example would be:
 
 `0x01` - Layout is BF layout e.g. RSSI 1 Character, Home 1 Character, Artificial Horizon 10 Characters, Battery Bar 5 Characters, etc.
+
 `0x02` - Layout is iNav e.g. RSSI 1 character, Direction Symbols 16 Characters, Artificial Horizon 12 characters, RTH 1 Character, etc.
 
 Another example (taken from the BF layout) could be:
@@ -78,6 +77,21 @@ Another example (taken from the BF layout) could be:
 | ![109.png](osd_images/109.png) | 0x6D | 109 | SYM_ARROW_14                    |
 | ![110.png](osd_images/110.png) | 0x6E | 110 | SYM_ARROW_15                    |
 | ![111.png](osd_images/111.png) | 0x6F | 111 | SYM_ARROW_16                    |
+
+This wil also determine the order and size of the symbol "blocks" within the character memory or font file. For example:
+
+| Memory Location | Symbol Block |
+| --------------- | --------------------------------------------------------- |
+|`0x00`           | System Reserved - Blank Character                         |
+|`0x01 - 0x3F`    | ASCII Standard (0-9, A-Z, + some characters such as ?#%)  |
+|`0x40 - 0xB4`    | OSD Symbol Space                                          |
+|`0xB4 - 0xB7`    | Pilot Logo (2x2)                                          |
+|`0xB8 - 0xFE`    | Boot (Splash) Logo (4x24)                                 |
+|`0xFF`           | System Reserved - Info Character                          |
+
+Example font block layout:
+
+![Example font block layout](images/block.png)
 
 ### Font ID
 
