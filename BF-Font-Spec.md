@@ -34,7 +34,7 @@ To allow the firmware to determine the "capabilities" of the font installed it i
 
 This is to help identify this character as a version character - as the current fonts have this byte as `0x55` it is proposed to set this to `0xFF`
 
-### Fomt Metadata Version
+### Font Metadata Version
 
 Specifies the layout of the rest of the metadata within the "Info Character" i.e bytes 3-64. For Version 1 this will be as specified above:
 
