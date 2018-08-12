@@ -15,49 +15,62 @@ Characters in positions `0x00` and `0xFF` have special uses:
 
 ## Metadata storage
 
-To allow the firmware to determine the "capabilities" of the font installed it is proposed to store metadata in the font. It is proposed to use `0xFF` for metadata as excluding this character from use will avoid issues with code using the auto-increment display write mode. Also in the currently used BF fonts this character is completely transparent meaning all bytes are set to `0x55`. The proposed layout of the 64 bytes for this "Info Character" is layed out below - the first four bytes are version information and shouldn't change between specification versions, the following bytes are helper information that may vary by specification version.
+To allow the firmware to determine the "capabilities" of the font installed it is proposed to store metadata in the font. It is proposed to use the character at position `0xFF` for metadata as excluding this character from use will avoid issues with code using the auto-increment display write mode. Also in the currently used BF fonts this character is completely transparent meaning all bytes are set to `0x55`. The proposed layout of the 64 bytes for this "Info Character" is listed below - the first five bytes are version information and shouldn't change between specification versions, the following bytes are helper information that may vary by specification version.
 
 - Byte 1 - Info Character identifier
 - Byte 2 - Font Metadata Version
 - Byte 3 - Firmware Type Identifier
-- Byte 4 - Font ID
-
-- Byte 5 - ASCII Space Offset
-- Byte 6 - Symbol Space Offset
-- Byte 7 - Pilot Logo Space Offset
-- Byte 8 - Boot Logo Space Offset
-
-- Bytes 9 - 63 Reserved for future use - set to `0x00`
+- Byte 4 - Firmware Font Version
+- Byte 5 - Font ID
+- Byte 6 - ASCII Space Offset
+- Byte 7 - Symbol Space Offset
+- Byte 8 - Pilot Logo Space Offset
+- Byte 9 - Boot Logo Space Offset
+- Bytes 10 - 63 Reserved for future use - set to `0x00`
 - Byte 64 - CRC or Checksum byte
 
 ### Info Character ID
 
-This is to help identify this character as a version character - as the current fonts have this byte as `0x55` it is proposed to set this to `0xFF`
+This is to help identify this character as a version character - as the current fonts have this byte as `0x55` it is proposed to set this to `0xFF`. It is not possible to solely rely on this Byte to identify this a character block, as although unlikely, it is possible that a font with a user logo may have this byte set to `0xFF`
 
 ### Font Metadata Version
 
-Specifies the layout of the rest of the metadata within the "Info Character" i.e bytes 3-64. For Version 1 this will be as specified above:
+Specifies the layout of the rest of the metadata within the "Info Character" i.e bytes 3-64. For Version 1 `0x01` this will be as specified above:
 
-- Byte 3 - Firmware Type Identifier
-- Byte 4 - Font ID
-
-- Byte 5 - ASCII Space Offset
-- Byte 6 - Symbol Space Offset
-- Byte 7 - Pilot Logo Space Offset
-- Byte 8 - Boot Logo Space Offset
-
-- Bytes 9 - 63 Reserved for future use - set to `0x00`
+- Byte 4 - Firmware Font Version
+- Byte 5 - Font ID
+- Byte 6 - ASCII Space Offset
+- Byte 7 - Symbol Space Offset
+- Byte 8 - Pilot Logo Space Offset
+- Byte 9 - Boot Logo Space Offset
+- Bytes 10 - 63 Reserved for future use - set to `0x00`
 - Byte 64 - CRC or Checksum byte
 
 ### Firmware Type Identifier
 
 Determines the class of firmware that this font will work with as iNav and Betaflight have different OSD display functions requiring different symbols. A part example would be:
 
-`0x01` - Layout is BF layout e.g. RSSI 1 Character, Home 1 Character, Artificial Horizon 10 Characters, Battery Bar 5 Characters, etc.
+- `0x01` - Font is designed to work with Betaflight / Cleanflight
+- `0x02` - Font is designed to work with iNav
 
-`0x02` - Layout is iNav e.g. RSSI 1 character, Direction Symbols 16 Characters, Artificial Horizon 12 characters, RTH 1 Character, etc.
+This wil also determine the order and size of the symbol "blocks" within the character memory or font file. For example:
 
-Another example (taken from the BF layout) could be:
+| Memory Location | Symbol Block |
+| --------------- | --------------------------------------------------------- |
+|`0x00`           | System Reserved - Blank Character                         |
+|`0x01 - 0x3F`    | ASCII Standard (0-9, A-Z, + some characters such as ?#%)  |
+|`0x40 - 0xB4`    | OSD Symbol Space                                          |
+|`0xB4 - 0xB7`    | Pilot Logo (2x2)                                          |
+|`0xB8 - 0xFE`    | Boot (Splash) Logo (4x24)                                 |
+|`0xFF`           | System Reserved - Info Character                          |
+
+Example font block layout:
+
+![Example font block layout](images/block.png)
+
+### Firmware Font Version
+
+The version of the Font. This should not be changed if style changes are made to the font, but is intended to cater for differences like support for more symbols being added by a particular firmware type. A section of a symbol layout example for betaflight is shown below
 
 | Example Glyph                  | Hex  | Dec | Symbol Name                     |
 | -------------------------------|------| --- | ------------------------------- |
@@ -77,21 +90,6 @@ Another example (taken from the BF layout) could be:
 | ![109.png](osd_images/109.png) | 0x6D | 109 | SYM_ARROW_14                    |
 | ![110.png](osd_images/110.png) | 0x6E | 110 | SYM_ARROW_15                    |
 | ![111.png](osd_images/111.png) | 0x6F | 111 | SYM_ARROW_16                    |
-
-This wil also determine the order and size of the symbol "blocks" within the character memory or font file. For example:
-
-| Memory Location | Symbol Block |
-| --------------- | --------------------------------------------------------- |
-|`0x00`           | System Reserved - Blank Character                         |
-|`0x01 - 0x3F`    | ASCII Standard (0-9, A-Z, + some characters such as ?#%)  |
-|`0x40 - 0xB4`    | OSD Symbol Space                                          |
-|`0xB4 - 0xB7`    | Pilot Logo (2x2)                                          |
-|`0xB8 - 0xFE`    | Boot (Splash) Logo (4x24)                                 |
-|`0xFF`           | System Reserved - Info Character                          |
-
-Example font block layout:
-
-![Example font block layout](images/block.png)
 
 ### Font ID
 
@@ -113,4 +111,19 @@ These are mainly included to help tooling - e.g. the different blocks could be h
 
 ### Checksum
 
-This sounds like a good idea - but the specification of the CRC\Checksum algorithm is TBD.
+It is proposed to use the DVB S2 CRC8 algorithm which is a robust single byte CRC that already has an implementation within Betaflight.
+
+## Example
+
+This is an example for the vision font for Betaflight.
+
+```C
+0x00 0x01 0x01 0x01 0x08 0x01 0x40 0xB2
+0xB8 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+0x00 0x00 0x00 0x00 0x00 0x00 0x00 0xC4
+```
