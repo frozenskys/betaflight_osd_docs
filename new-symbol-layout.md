@@ -18,7 +18,6 @@
 | ![025.png](osd_images/025.png) | 0x4D | 025 | SYM_HEADING_S                   | Used in OSD.c      |
 | ![026.png](osd_images/026.png) | 0x4E | 026 | SYM_HEADING_E                   | Used in OSD.c      |
 | ![027.png](osd_images/027.png) | 0x4F | 027 | SYM_HEADING_W                   | Used in OSD.c      |
-
 | ![028.png](osd_images/028.png) | 0x50 | 028 | SYM_HEADING_DIVIDED_LINE        | Used in OSD.c      |
 | ![029.png](osd_images/029.png) | 0x51 | 029 | SYM_HEADING_LINE                | Used in OSD.c      |
 | ![030.png](osd_images/030.png) | 0x52 | 030 | SYM_SAT_L                       | Used in OSD.c      |
@@ -36,7 +35,6 @@
 | ![143.png](osd_images/143.png) | 0x5E | 143 | SYM_PB_CLOSE                    | Used in OSD.c      |
 | ![154.png](osd_images/154.png) | 0x5F | 154 | SYM_AMP                         | Used in OSD.c      |
 | ![096.png](osd_images/096.png) | 0x60 | 096 | SYM_ARROW_SOUTH                 | Used in OSD.c      |
-
 | ![097.png](osd_images/097.png) | 0x61 | 097 | SYM_ARROW_2                     | Calculated from SYM_ARROW_SOUTH + heading  |
 | ![098.png](osd_images/098.png) | 0x62 | 098 | SYM_ARROW_3                     | Calculated from SYM_ARROW_SOUTH + heading  |
 | ![099.png](osd_images/099.png) | 0x63 | 099 | SYM_ARROW_4                     | Calculated from SYM_ARROW_SOUTH + heading  |
@@ -52,7 +50,6 @@
 | ![109.png](osd_images/109.png) | 0x6D | 109 | SYM_ARROW_14                    | Calculated from SYM_ARROW_SOUTH + heading  |
 | ![110.png](osd_images/110.png) | 0x6E | 110 | SYM_ARROW_15                    | Calculated from SYM_ARROW_SOUTH + heading  |
 | ![111.png](osd_images/111.png) | 0x6F | 111 | SYM_ARROW_16                    | Calculated from SYM_ARROW_SOUTH + heading  |
-
 | ![128.png](osd_images/128.png) | 0x70 | 128 | SYM_AH_BAR9_0                   | Used in OSD.c      |
 | ![129.png](osd_images/129.png) | 0x71 | 129 | SYM_AH_BAR9_1                   | Calculated in AH using SYM_AH_BAR9_0 as base |
 | ![130.png](osd_images/130.png) | 0x72 | 130 | SYM_AH_BAR9_2                   | Calculated in AH using SYM_AH_BAR9_0 as base |
@@ -69,7 +66,6 @@
 | ![148.png](osd_images/148.png) | 0x7D | 148 | SYM_BATT_2                      | Calculated from SYM_BATT_EMPTY      |
 | ![149.png](osd_images/149.png) | 0x7E | 149 | SYM_BATT_1                      | Calculated from SYM_BATT_EMPTY      |
 | ![150.png](osd_images/150.png) | 0x7F | 150 | SYM_BATT_EMPTY                  | Used in OSD.c      |
-
 | ![151.png](osd_images/151.png) | 0x80 | 151 | SYM_MAIN_BATT                   | Used in OSD.c      |
 | ![155.png](osd_images/155.png) | 0x81 | 155 | SYM_ON_M                        | Used in OSD.c      |
 | ![156.png](osd_images/156.png) | 0x82 | 156 | SYM_FLY_M                       | Used in OSD.c      |
